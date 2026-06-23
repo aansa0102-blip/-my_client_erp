@@ -1,0 +1,20 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up(): void {
+        Schema::create('project_costing', function (Blueprint $table) {
+            $table->id();
+            $table->string('project_name'); // Road marking / Industrial supply jobs
+            $table->decimal('material_cost', 15, 2)->default(0.00);
+            $table->decimal('labor_cost', 15, 2)->default(0.00);
+            $table->decimal('equipment_cost', 15, 2)->default(0.00);
+            $table->decimal('revenue_aed', 15, 2)->default(0.00);
+            $table->timestamps();
+        });
+    }
+    public function down(): void { Schema::dropIfExists('project_costing'); }
+};
