@@ -15,8 +15,11 @@
                 </div>
                 <div>
                     <div class="text-muted" style="font-size:12px;">Today Sales</div>
-                    <div class="fw-bold fs-5">PKR {{ number_format($today_sales) }}</div>
+                    <div class="fw-bold fs-5">AED {{ number_format($today_sales) }}</div>
                     <div style="font-size:11px;color:#6c757d;">{{ $today_sales_count }} invoices</div>
+                 <div class="text-muted" style="font-size:12px;">Today Sales (Incl. 5% VAT)</div>
+<div class="fw-bold fs-5">AED {{ number_format($today_sales) }}</div>
+
                 </div>
             </div>
         </div>
@@ -29,7 +32,7 @@
                 </div>
                 <div>
                     <div class="text-muted" style="font-size:12px;">Today Recovery</div>
-                    <div class="fw-bold fs-5">PKR {{ number_format($today_recovery) }}</div>
+                    <div class="fw-bold fs-5">AED {{ number_format($today_recovery) }}</div>
                     <div style="font-size:11px;color:#6c757d;">Monthly: PKR {{ number_format($monthly_recovery) }}</div>
                 </div>
             </div>
@@ -43,7 +46,7 @@
                 </div>
                 <div>
                     <div class="text-muted" style="font-size:12px;">Total Outstanding</div>
-                    <div class="fw-bold fs-5 text-danger">PKR {{ number_format($total_outstanding) }}</div>
+                    <div class="fw-bold fs-5 text-danger">AED {{ number_format($total_outstanding) }}</div>
                     <div style="font-size:11px;color:#6c757d;">Due amount</div>
                 </div>
             </div>
@@ -57,7 +60,7 @@
                 </div>
                 <div>
                     <div class="text-muted" style="font-size:12px;">Monthly Sales</div>
-                    <div class="fw-bold fs-5">PKR {{ number_format($monthly_sales) }}</div>
+                    <div class="fw-bold fs-5">AED {{ number_format($monthly_sales) }}</div>
                     <div style="font-size:11px;color:#6c757d;">{{ now()->format('M Y') }}</div>
                 </div>
             </div>
@@ -100,8 +103,8 @@
                     <i class="bi bi-wallet2 text-white fs-4"></i>
                 </div>
                 <div>
-                    <div class="text-muted" style="font-size:12px;">Monthly Expenses</div>
-                    <div class="fw-bold fs-5">PKR {{ number_format($monthly_expenses) }}</div>
+                 <div class="text-muted" style="font-size:12px;">Monthly Sales (Incl. 5% VAT)</div>
+                    <div class="fw-bold fs-5">AED {{ number_format($monthly_expenses) }}</div>
                 </div>
             </div>
         </div>
@@ -116,7 +119,7 @@
                     <div class="text-muted" style="font-size:12px;">Net Profit</div>
                     @php $profit = $monthly_sales - $monthly_expenses; @endphp
                     <div class="fw-bold fs-5 text-{{ $profit >= 0 ? 'success' : 'danger' }}">
-                        PKR {{ number_format($profit) }}
+                        AED {{ number_format($profit) }}
                     </div>
                     <div style="font-size:11px;color:#6c757d;">This month</div>
                 </div>
@@ -151,7 +154,7 @@
                                 <td class="ps-3"><a href="{{ route('sales.show', $sale) }}" class="text-decoration-none fw-bold">{{ $sale->invoice_no }}</a></td>
                                 <td>{{ $sale->customer->name ?? 'N/A' }}</td>
                                 <td>PKR {{ number_format($sale->net_amount) }}</td>
-                                <td class="text-danger">PKR {{ number_format($sale->due_amount) }}</td>
+                                <td class="text-danger">AED {{ number_format($sale->due_amount) }}</td>
                                 <td>
                                     <span class="badge bg-{{ $sale->status == 'paid' ? 'success' : ($sale->status == 'partial' ? 'warning' : 'danger') }}">
                                         {{ ucfirst($sale->status) }}
